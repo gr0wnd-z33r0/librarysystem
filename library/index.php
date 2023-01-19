@@ -12,11 +12,11 @@ if ($_POST["vercode"] != $_SESSION["vercode"] OR $_SESSION["vercode"]=='')  {
         echo "<script>alert('Incorrect verification code');</script>" ;
     } 
         else {
-$email=$_POST['emailid'];
+$username=$_POST['emailid'];
 $password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,StudentId,Status FROM tblstudents WHERE EmailId=:email and Password=:password";
+$sql ="SELECT EmailId,Password,StudentId,Status FROM tblstudents WHERE EmailId=:username and Password=:password";
 $query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
+$query-> bindParam(':username', $username, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
 $query-> execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -84,7 +84,7 @@ echo "<script>alert('Invalid Details');</script>";
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Enter Email id</label>
+<label>Enter username id</label>
 <input class="form-control" type="text" name="emailid" required autocomplete="off" />
 </div>
 <div class="form-group">

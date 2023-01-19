@@ -18,16 +18,15 @@ fputs($fp , "$hits[0]");
 fclose($fp); 
 $StudentId= $hits[0];   
 $fname=$_POST['fullanme'];
-$mobileno=$_POST['mobileno'];
-$email=$_POST['email']; 
+
+$username=$_POST['username']; 
 $password=md5($_POST['password']); 
 $status=1;
-$sql="INSERT INTO  tblstudents(StudentId,FullName,MobileNumber,EmailId,Password,Status) VALUES(:StudentId,:fname,:mobileno,:email,:password,:status)";
+$sql="INSERT INTO  tblstudents(StudentId,FullName,EmailId,Password,Status) VALUES(:StudentId,:fname,:username,:password,:status)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':StudentId',$StudentId,PDO::PARAM_STR);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
-$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
-$query->bindParam(':email',$email,PDO::PARAM_STR);
+$query->bindParam(':username',$username,PDO::PARAM_STR);
 $query->bindParam(':password',$password,PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->execute();
@@ -118,16 +117,10 @@ error:function (){}
 <label>Enter Full Name</label>
 <input class="form-control" type="text" name="fullanme" autocomplete="off" required />
 </div>
-
-
+                                       
 <div class="form-group">
-<label>Mobile Number :</label>
-<input class="form-control" type="text" name="mobileno" maxlength="10" autocomplete="off" required />
-</div>
-                                        
-<div class="form-group">
-<label>Enter Email</label>
-<input class="form-control" type="email" name="email" id="emailid" onBlur="checkAvailability()"  autocomplete="off" required  />
+<label>Enter username</label>
+<input class="form-control" type="username" name="username" id="emailid" onBlur="checkAvailability()"  autocomplete="off" required  />
    <span id="user-availability-status" style="font-size:12px;"></span> 
 </div>
 

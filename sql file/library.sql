@@ -31,7 +31,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `FullName` varchar(100) DEFAULT NULL,
-  `AdminEmail` varchar(120) DEFAULT NULL,
   `UserName` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `updationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
@@ -42,8 +41,44 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `FullName`, `UserName`, `Password`, `updationDate`) VALUES
-(2, 'Clive Dela Cruz', 'admin', 'f925916e2754e5e03f75dd58a5733251', '2019-04-11 13:56:38');
-
+(1, 'Helen Sunderland', 'hsunderland', 'hopesunderland', '2020-01-01 11:11:11');
+(2, 'Rowena Givens', 'rgivens', 'blackganggivens', '2020-01-01 11:11:11');
+(3, 'Rebekah Potter', 'rpotter', 'castlehavenpotter', '2020-01-01 11:11:11');
+(4, 'Charlotte Rand', 'crand', 'freshwaterrand', '2020-01-01 11:11:11');
+(5, 'Sarah Squibb', 'ssquibb', 'comptonsquibb', '2020-01-01 11:11:11');
+(6, 'Fiona Steele', 'fsteele', 'yaverlandsteele', '2020-01-01 11:11:11');
+(7, 'Emma Eaglen', 'eeaglen', 'yaverlandeaglen', '2020-01-01 11:11:11');
+(8, 'Olivia McLuckie', 'omcluckie', 'totlandmcluckie', '2020-01-01 11:11:11');
+(9, 'Tom Speer', 'tspeer', 'seagrovespeer', '2020-01-01 11:11:11');
+(10, 'Jamie Dickinson', 'jdickinson', 'appleydickinson', '2020-01-01 11:11:11');
+(11, 'Richard Berryman', 'rberryman', 'brookberryman', '2020-01-01 11:11:11');
+(12, 'Seraphina Studd', 'sstudd', 'alumstudd', '2020-01-01 11:11:11');
+(13, 'Rachel Gregory', 'rgregory', 'priorygregory', '2020-01-01 11:11:11');
+(14, 'Sam Lines', 'slines', 'ventnorlines', '2020-01-01 11:11:11');
+(15, 'Donna McQueen', 'dmcqueen', 'osbournemcqueen', '2020-01-01 11:11:11');
+(16, 'Clemma Yardley', 'cyardley', 'headyardley', '2020-01-01 11:11:11');
+(17, 'David Finch', 'dfinch', 'depheadfinch', '2020-01-01 11:11:11');
+(18, 'Libby Turner', 'lturner', 'sencoturner', '2020-01-01 11:11:11');
+(19, 'Helen Quick', 'hquick', 'lsaquick', '2020-01-01 11:11:11');
+(20, 'Ella Merrifield', 'emerrifield', 'lsamerrifield', '2020-01-01 11:11:11');
+(21, 'Masie Backshall', 'mbackshall', 'lsamerrifield', '2020-01-01 11:11:11');
+(22, 'Evee Hutton', 'ehutton', 'lsahutton', '2020-01-01 11:11:11');
+(23, 'Kirren Shaw', 'kshaw', 'ks1lsashaw', '2020-01-01 11:11:11');
+(24, 'Erin Wykes', 'ewykes', 'lsawykes', '2020-01-01 11:11:11');
+(25, 'Fran Pike', 'fpike', 'lsapike', '2020-01-01 11:11:11');
+(26, 'Anna Marie Drost', 'adrost', 'lsadrost', '2020-01-01 11:11:11');
+(27, 'Suzanne Aitken', 'saitken', 'lsaaitken', '2020-01-01 11:11:11');
+(28, 'Debbie Shaw', 'dshaw', 'lsashaw', '2020-01-01 11:11:11');
+(29, 'Emma Shelley', 'eshelley', 'lsashelley', '2020-01-01 11:11:11');
+(30, 'Nerys James', 'njames', 'lsajames',, '2020-01-01 11:11:11');
+(31, 'Jo Inett', 'jinett', 'lsainett', '2020-01-01 11:11:11');
+(32, 'Angie Speer', 'aspeer', 'lsaspeer', '2020-01-01 11:11:11');
+(33, 'Kirsty Hippolite', 'khippolite', 'lsahippolite', '2020-01-01 11:11:11');
+(34, 'Chantal Thomas', 'cthomas', 'frenchthomas', '2020-01-01 11:11:11');
+(35, 'Claire Loizos', 'cloizos', 'scienceloizos', '2020-01-01 11:11:11');
+(36, 'Emily Metcalfe', 'emetcalfe', 'remetcalfe', '2020-01-01 11:11:11');
+(37, 'William Squibb', 'wsquibb', 'devsquibb', '2020-01-01 11:11:11');
+(38, 'Admin', 'Admin', 'libraryadmin', '2020-01-01 11:11:11');
 -- --------------------------------------------------------
 
 --
@@ -157,7 +192,6 @@ CREATE TABLE `tblstudents` (
   `StudentId` varchar(100) DEFAULT NULL,
   `FullName` varchar(120) DEFAULT NULL,
   `EmailId` varchar(120) DEFAULT NULL,
-  `MobileNumber` char(11) DEFAULT NULL,
   `Password` varchar(120) DEFAULT NULL,
   `Status` int(1) DEFAULT NULL,
   `RegDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -168,12 +202,8 @@ CREATE TABLE `tblstudents` (
 -- Dumping data for table `tblstudents`
 --
 
-INSERT INTO `tblstudents` (`id`, `StudentId`, `FullName`, `EmailId`, `MobileNumber`, `Password`, `Status`, `RegDate`, `UpdationDate`) VALUES
-(1, 'SID002', 'Andrew Braza', 'andrew1@gmail.com', '9865472555', 'f925916e2754e5e03f75dd58a5733251', 1, '2017-07-11 15:37:05', '2019-04-11 14:11:39'),
-(4, 'SID005', 'John Roberts', 'john@yahoo.com', '8569710025', '92228410fc8b872914e023160cf4ae8f', 0, '2017-07-11 15:41:27', '2019-04-11 14:12:04'),
-(9, 'SID010', 'Rey Tejada', 'rey@gmail.com', '8585856224', 'f925916e2754e5e03f75dd58a5733251', 1, '2017-07-15 13:40:30', '2019-04-11 14:12:27'),
-(10, 'SID011', 'Clide Louie', 'CLIDE@gmail.com', '4672423754', 'f925916e2754e5e03f75dd58a5733251', 1, '2017-07-15 18:00:59', '2019-04-11 14:12:50'),
-(11, 'SID012', 'Clive Dela Cruz', 'clive21@yahoo.com', '0945208280', '21232f297a57a5a743894a0e4a801fc3', 1, '2019-04-11 13:46:30', NULL);
+INSERT INTO `tblstudents` (`id`, `StudentId`, `FullName`, `EmailId`, `Password`, `Status`, `RegDate`, `UpdationDate`) VALUES
+
 
 --
 -- Indexes for dumped tables

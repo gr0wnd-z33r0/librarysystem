@@ -9,27 +9,24 @@ if ($_POST["vercode"] != $_SESSION["vercode"] OR $_SESSION["vercode"]=='')  {
         echo "<script>alert('Incorrect verification code');</script>" ;
     } 
         else {
-$email=$_POST['email'];
-$mobile=$_POST['mobile'];
+$username=$_POST['username'];
 $newpassword=md5($_POST['newpassword']);
-  $sql ="SELECT EmailId FROM tblstudents WHERE EmailId=:email and MobileNumber=:mobile";
+  $sql ="SELECT EmailId FROM tblstudents WHERE EmailId=:username;
 $query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> bindParam(':mobile', $mobile, PDO::PARAM_STR);
+$query-> bindParam(':username', $username, PDO::PARAM_STR);
 $query-> execute();
 $results = $query -> fetchAll(PDO::FETCH_OBJ);
 if($query -> rowCount() > 0)
 {
-$con="update tblstudents set Password=:newpassword where EmailId=:email and MobileNumber=:mobile";
+$con="update tblstudents set Password=:newpassword where EmailId=:username";
 $chngpwd1 = $dbh->prepare($con);
-$chngpwd1-> bindParam(':email', $email, PDO::PARAM_STR);
-$chngpwd1-> bindParam(':mobile', $mobile, PDO::PARAM_STR);
+$chngpwd1-> bindParam(':username', $username, PDO::PARAM_STR);
 $chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
 $chngpwd1->execute();
 echo "<script>alert('Your Password succesfully changed');</script>";
 }
 else {
-echo "<script>alert('Email id or Mobile no is invalid');</script>"; 
+echo "<script>alert('username is invalid');</script>"; 
 }
 }
 }
@@ -87,13 +84,8 @@ return true;
 <form role="form" name="chngpwd" method="post" onSubmit="return valid();">
 
 <div class="form-group">
-<label>Enter Reg Email id</label>
-<input class="form-control" type="email" name="email" required autocomplete="off" />
-</div>
-
-<div class="form-group">
-<label>Enter Reg Mobile No</label>
-<input class="form-control" type="text" name="mobile" required autocomplete="off" />
+<label>Enter Reg username id</label>
+<input class="form-control" type="username" name="username" required autocomplete="off" />
 </div>
 
 <div class="form-group">

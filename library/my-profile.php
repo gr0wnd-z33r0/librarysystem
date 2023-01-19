@@ -11,13 +11,12 @@ if(isset($_POST['update']))
 {    
 $sid=$_SESSION['stdid'];  
 $fname=$_POST['fullanme'];
-$mobileno=$_POST['mobileno'];
 
-$sql="update tblstudents set FullName=:fname,MobileNumber=:mobileno where StudentId=:sid";
+$sql="update tblstudents set FullName=:fname where StudentId=:sid";
 $query = $dbh->prepare($sql);
 $query->bindParam(':sid',$sid,PDO::PARAM_STR);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
-$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
+
 $query->execute();
 
 echo '<script>alert("Your profile has been updated")</script>';
@@ -70,7 +69,7 @@ echo '<script>alert("Your profile has been updated")</script>';
                             <form name="signup" method="post">
 <?php 
 $sid=$_SESSION['stdid'];
-$sql="SELECT StudentId,FullName,EmailId,MobileNumber,RegDate,UpdationDate,Status from  tblstudents  where StudentId=:sid ";
+$sql="SELECT StudentId,FullName,EmailId,RegDate,UpdationDate,Status from  tblstudents  where StudentId=:sid ";
 $query = $dbh -> prepare($sql);
 $query-> bindParam(':sid', $sid, PDO::PARAM_STR);
 $query->execute();
@@ -112,16 +111,10 @@ foreach($results as $result)
 <label>Enter Full Name</label>
 <input class="form-control" type="text" name="fullanme" value="<?php echo htmlentities($result->FullName);?>" autocomplete="off" required />
 </div>
-
-
+                              
 <div class="form-group">
-<label>Mobile Number :</label>
-<input class="form-control" type="text" name="mobileno" maxlength="10" value="<?php echo htmlentities($result->MobileNumber);?>" autocomplete="off" required />
-</div>
-                                        
-<div class="form-group">
-<label>Enter Email</label>
-<input class="form-control" type="email" name="email" id="emailid" value="<?php echo htmlentities($result->EmailId);?>"  autocomplete="off" required readonly />
+<label>Enter Username</label>
+<input class="form-control" type="username" name="username" id="emailid" value="<?php echo htmlentities($result->EmailId);?>"  autocomplete="off" required readonly />
 </div>
 <?php }} ?>
                               
